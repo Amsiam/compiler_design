@@ -1,0 +1,6 @@
+int is a keyword.
+a is a identifier.
+b is a identifier.
+c is a identifier.
+b is a identifier.
+c is a identifier.
