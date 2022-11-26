@@ -32,18 +32,7 @@ bool isIdentifier(string s)
 	return regex_match(s, identifier) ? 1 : 0;
 }
 
-bool isMain(string s)
-{
-	sort(s.begin(), s.end());
 
-	do
-	{
-		if (s.compare("main") == 0)
-			return 1;
-	} while (next_permutation(s.begin(), s.end()));
-
-	return 0;
-}
 
 void solve()
 {
@@ -93,21 +82,7 @@ void solve()
 		string s = words[i];
 		if (isIdentifier(s))
 		{
-			if (s.size() == 4 && words[i + 1].compare("()") == 0)
-			{
-				if (s.compare("main") == 0)
-				{
-					cout << s << " entry point." << endl;
-				}
-				else if (isMain(s))
-					cout << s << " is wrongly typed. It should be main";
-				else if (isKeyword(s))
-					cout << s << " is a keyword." << endl;
-
-				else
-					cout << s << " is a identifier." << endl;
-			}
-			else if (isKeyword(s))
+			if (isKeyword(s))
 				cout << s << " is a keyword." << endl;
 
 			else
@@ -123,7 +98,7 @@ void solve()
 int main()
 {
 	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
+	// freopen("output.txt", "w", stdout);
 
 	solve();
 
