@@ -1,15 +1,6 @@
-int is a keyword
-a is a identifier
-= is not a valid identifier
-b is a identifier
-+ is not a valid identifier
-c is a identifier
-; is not a valid identifier
-b is a identifier
-= is not a valid identifier
-2 is not a valid identifier
-; is not a valid identifier
-c is a identifier
-= is not a valid identifier
-3 is not a valid identifier
-; is not a valid identifier
+int is a keyword.
+a is a identifier.
+b is a identifier.
+c is a identifier.
+b is a identifier.
+c is a identifier.
