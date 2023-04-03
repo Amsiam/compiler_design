@@ -1,0 +1,2 @@
+234 is an integer.
+234.79 is a float number.

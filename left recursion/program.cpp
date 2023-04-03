@@ -31,6 +31,10 @@ void solve() {
 			notHave.push_back(getLoc[i] + 1);
 		}
 	}
+	if (notHave.size() == 0) {
+		cout << "Not possible" << endl;
+		return;
+	}
 	if (recursion.size() > 0) {
 		cout << now << " -> ";
 		for (int loc : notHave) {
