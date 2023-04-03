@@ -34,64 +34,86 @@ void parse() {
 	vector<string> words;
 
 	bool isFoundQ = 0;
-
+	bool state = 0;
 	for (string line : lines)
 	{
+
+
 		string l = "";
 		for (int i = 0; i < (int) line.size(); i++)
 		{
+
+
+
+
+
+
 			char c = line[i];
-			if (isDelimiter(c) && !isFoundQ)
-			{
-				if ((c == '+' || c == '-') && i - 1 > 0 && line[i - 1] == 'E' && (line[i - 2] - '0' >= 0 && line[i - 2] - '0' <= 9)) {
-					l += line[i];
-					continue;
-				}
-				if (l != "")
-					words.push_back(l);
 
-				if (c != ' ')
+			if (c == '/' && line[i + 1] == '/')break;
+
+			if ((i + 1) < (int) line.size() && c == '/' && line[i + 1] == '*')state = 1;
+			if ((i + 1) < (int) line.size() && c == '*' && line[i + 1] == '/') {
+				state = 0;
+				i++;
+				if (i + 1 >= (int) line.size())break;
+			};
+
+
+
+			if (state == 0) {
+				if (isDelimiter(c) && !isFoundQ )
 				{
-					l = c;
-
-					if (isOperator(c)) {
-						i++;
-						if (i < (int)line.size() && line[i] != ' ' && isOperator(line[i]))
-						{
-							l += line[i];
-						} else {
-
-							i--;
-						}
-
+					if ((c == '+' || c == '-') && i - 1 > 0 && line[i - 1] == 'E' && (line[i - 2] - '0' >= 0 && line[i - 2] - '0' <= 9)) {
+						l += line[i];
+						continue;
 					}
-					words.push_back(l);
-				}
-				l = "";
-			}
-			else
-			{
-				if (c == '"' && !isFoundQ) {
-					isFoundQ = 1;
+					if (l != "")
+						words.push_back(l);
 
-					l += c;
-				}
-				else if (c == '"' && isFoundQ) {
-					isFoundQ = 0;
+					if (c != ' ')
+					{
+						l = c;
 
-					l += c;
-					words.push_back(l);
+						if (isOperator(c)) {
+							i++;
+							if (i < (int)line.size() && line[i] != ' ' && isOperator(line[i]))
+							{
+								l += line[i];
+							} else {
+
+								i--;
+							}
+
+						}
+						words.push_back(l);
+					}
 					l = "";
+				}
+				else
+				{
+					if (c == '"' && !isFoundQ) {
+						isFoundQ = 1;
 
-				} else {
+						l += c;
+					}
+					else if (c == '"' && isFoundQ) {
+						isFoundQ = 0;
 
-					l += c;
+						l += c;
+						words.push_back(l);
+						l = "";
+
+					} else {
+
+						l += c;
+					}
 				}
 			}
 		}
-
 		if (l != "")
 			words.push_back(l);
+
 	}
 
 	cout << "Total Number of tokens: " << words.size() << endl;

@@ -4,7 +4,10 @@ int main(){
     a+++=++b;
     a = b+7;
     a+=b;
-
+    /*
+    comment 
+ok
+    */
     printf("b=%d",a,b);
 
     return 0;

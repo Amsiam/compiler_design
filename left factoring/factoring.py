@@ -1,4 +1,6 @@
-from itertools import izip_longest
+# from itertools import izip_longest
+
+from itertools import zip_longest as izip_longest
 
 def find_prefixes(strings):
     zipped = izip_longest(*strings, fillvalue='')
@@ -24,7 +26,7 @@ def find_prefix_suffixes(strings, prefixes):
 
 
 
-s = raw_input("Enter grammar: ")
+s = input("Enter grammar: ")
 
 finished = []
 not_finished = []
@@ -93,5 +95,5 @@ while len(not_finished)>0:
 finished = set(finished)
 
 for k in finished:
-    print k
+    print(k)
 
